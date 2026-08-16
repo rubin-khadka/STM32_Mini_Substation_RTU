@@ -1,1 +1,7 @@
 ../Core/Src/i2c1.c:11:6:I2C1_Init	1
+../Core/Src/i2c1.c:45:12:I2C1_Start	5
+../Core/Src/i2c1.c:69:6:I2C1_Stop	3
+../Core/Src/i2c1.c:82:12:I2C1_SendAddr	4
+../Core/Src/i2c1.c:110:12:I2C1_WriteByte	4
+../Core/Src/i2c1.c:129:12:I2C1_WriteByteWaitComplete	5
+../Core/Src/i2c1.c:150:12:I2C1_ReadBurst	21
