@@ -379,7 +379,7 @@ extern "C" {
 #define LL_DBGMCU_APB1_GRP1_WWDG_STOP      DBGMCU_APB1_FZ_DBG_WWDG_STOP          /*!< Debug Window Watchdog stopped when Core is halted */
 #define LL_DBGMCU_APB1_GRP1_IWDG_STOP      DBGMCU_APB1_FZ_DBG_IWDG_STOP          /*!< Debug Independent Watchdog stopped when Core is halted */
 #define LL_DBGMCU_APB1_GRP1_I2C1_STOP      DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT /*!< I2C1 SMBUS timeout mode stopped when Core is halted */
-#define LL_DBGMCU_APB1_GRP1_I2C2_STOP      DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT /*!< I2C2 SMBUS timeout mode stopped when Core is halted */
+#define LL_DBGMCU_APB1_GRP1_I2C1_STOP      DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT /*!< I2C1 SMBUS timeout mode stopped when Core is halted */
 #if defined(DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT)
 #define LL_DBGMCU_APB1_GRP1_I2C3_STOP      DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT /*!< I2C3 SMBUS timeout mode stopped when Core is halted */
 #endif /* DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT */
@@ -1379,7 +1379,7 @@ __STATIC_INLINE uint32_t LL_DBGMCU_GetTracePinAssignment(void)
   *         DBGMCU_APB1_FZ      DBG_WWDG_STOP           LL_DBGMCU_APB1_GRP1_FreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_IWDG_STOP           LL_DBGMCU_APB1_GRP1_FreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C1_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_FreezePeriph\n
-  *         DBGMCU_APB1_FZ      DBG_I2C2_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_FreezePeriph\n
+  *         DBGMCU_APB1_FZ      DBG_I2C1_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_FreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C3_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_FreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C4_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_FreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_CAN1_STOP           LL_DBGMCU_APB1_GRP1_FreezePeriph\n
@@ -1400,7 +1400,7 @@ __STATIC_INLINE uint32_t LL_DBGMCU_GetTracePinAssignment(void)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_WWDG_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_IWDG_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C1_STOP
-  *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C2_STOP
+  *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C1_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C3_STOP (*)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C4_STOP (*)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_CAN1_STOP (*)
@@ -1431,7 +1431,7 @@ __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_FreezePeriph(uint32_t Periphs)
   *         DBGMCU_APB1_FZ      DBG_WWDG_STOP           LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_IWDG_STOP           LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C1_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
-  *         DBGMCU_APB1_FZ      DBG_I2C2_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
+  *         DBGMCU_APB1_FZ      DBG_I2C1_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C3_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_I2C4_SMBUS_TIMEOUT  LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
   *         DBGMCU_APB1_FZ      DBG_CAN1_STOP           LL_DBGMCU_APB1_GRP1_UnFreezePeriph\n
@@ -1452,7 +1452,7 @@ __STATIC_INLINE void LL_DBGMCU_APB1_GRP1_FreezePeriph(uint32_t Periphs)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_WWDG_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_IWDG_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C1_STOP
-  *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C2_STOP
+  *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C1_STOP
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C3_STOP (*)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_I2C4_STOP (*)
   *         @arg @ref LL_DBGMCU_APB1_GRP1_CAN1_STOP (*)

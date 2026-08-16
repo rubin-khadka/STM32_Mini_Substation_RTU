@@ -81,7 +81,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -200,7 +200,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -315,7 +315,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -421,7 +421,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -517,7 +517,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -550,7 +550,7 @@
 /** 
   * @brief   AF 9 selection 
   */ 
-#define GPIO_AF9_I2C2          ((uint8_t)0x09)  /* I2C2 Alternate Function mapping  */
+#define GPIO_AF9_I2C1          ((uint8_t)0x09)  /* I2C1 Alternate Function mapping  */
 #define GPIO_AF9_I2C3          ((uint8_t)0x09)  /* I2C3 Alternate Function mapping  */
 
 
@@ -607,7 +607,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping    */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping    */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping    */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping    */
 #define GPIO_AF4_FMPI2C1       ((uint8_t)0x04)  /* FMPI2C1 Alternate Function mapping */
 
@@ -652,7 +652,7 @@
 #define GPIO_AF9_TIM12         ((uint8_t)0x09)  /* TIM12 Alternate Function mapping   */
 #define GPIO_AF9_TIM13         ((uint8_t)0x09)  /* TIM13 Alternate Function mapping   */
 #define GPIO_AF9_TIM14         ((uint8_t)0x09)  /* TIM14 Alternate Function mapping   */
-#define GPIO_AF9_I2C2          ((uint8_t)0x09)  /* I2C2 Alternate Function mapping    */
+#define GPIO_AF9_I2C1          ((uint8_t)0x09)  /* I2C1 Alternate Function mapping    */
 #define GPIO_AF9_I2C3          ((uint8_t)0x09)  /* I2C3 Alternate Function mapping    */
 #define GPIO_AF9_FMPI2C1       ((uint8_t)0x09)  /* FMPI2C1 Alternate Function mapping */
 #define GPIO_AF9_CAN1          ((uint8_t)0x09)  /* CAN1 Alternate Function mapping    */
@@ -718,7 +718,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping    */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping    */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping    */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping    */
 #define GPIO_AF4_FMPI2C1       ((uint8_t)0x04)  /* FMPI2C1 Alternate Function mapping */
 
@@ -770,7 +770,7 @@
 #define GPIO_AF9_TIM12         ((uint8_t)0x09)  /* TIM12 Alternate Function mapping   */
 #define GPIO_AF9_TIM13         ((uint8_t)0x09)  /* TIM13 Alternate Function mapping   */
 #define GPIO_AF9_TIM14         ((uint8_t)0x09)  /* TIM14 Alternate Function mapping   */
-#define GPIO_AF9_I2C2          ((uint8_t)0x09)  /* I2C2 Alternate Function mapping    */
+#define GPIO_AF9_I2C1          ((uint8_t)0x09)  /* I2C1 Alternate Function mapping    */
 #define GPIO_AF9_I2C3          ((uint8_t)0x09)  /* I2C3 Alternate Function mapping    */
 #define GPIO_AF9_FMPI2C1       ((uint8_t)0x09)  /* FMPI2C1 Alternate Function mapping */
 #define GPIO_AF9_CAN1          ((uint8_t)0x09)  /* CAN1 Alternate Function mapping    */
@@ -848,7 +848,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -886,7 +886,7 @@
   * @brief   AF 9 selection 
   */ 
 #define GPIO_AF9_TIM14         ((uint8_t)0x09)  /* TIM14 Alternate Function mapping */
-#define GPIO_AF9_I2C2          ((uint8_t)0x09)  /* I2C2 Alternate Function mapping  */
+#define GPIO_AF9_I2C1          ((uint8_t)0x09)  /* I2C1 Alternate Function mapping  */
 #define GPIO_AF9_I2C3          ((uint8_t)0x09)  /* I2C3 Alternate Function mapping  */
 
 /** 
@@ -937,7 +937,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_FMPI2C1       ((uint8_t)0x04)  /* FMPI2C1 Alternate Function mapping */
 
 /** 
@@ -970,7 +970,7 @@
 /** 
   * @brief   AF 9 selection 
   */ 
-#define GPIO_AF9_I2C2          ((uint8_t)0x09)  /* I2C2 Alternate Function mapping  */
+#define GPIO_AF9_I2C1          ((uint8_t)0x09)  /* I2C1 Alternate Function mapping  */
 #define GPIO_AF9_FMPI2C1       ((uint8_t)0x09)  /* FMPI2C1 Alternate Function mapping */
 
 /** 
@@ -1016,7 +1016,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 #define GPIO_AF4_FMPI2C1       ((uint8_t)0x04)  /* FMPI2C1 Alternate Function mapping */
 #define GPIO_AF4_CEC           ((uint8_t)0x04)  /* CEC Alternate Function mapping  */
@@ -1136,7 +1136,7 @@
   * @brief   AF 4 selection  
   */ 
 #define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
-#define GPIO_AF4_I2C2          ((uint8_t)0x04)  /* I2C2 Alternate Function mapping */
+#define GPIO_AF4_I2C1          ((uint8_t)0x04)  /* I2C1 Alternate Function mapping */
 #define GPIO_AF4_I2C3          ((uint8_t)0x04)  /* I2C3 Alternate Function mapping */
 
 /** 
@@ -1345,7 +1345,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \
@@ -1373,7 +1373,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \
@@ -1400,7 +1400,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \
@@ -1424,7 +1424,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \
@@ -1449,12 +1449,12 @@
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM9)       || \
                           ((AF) == GPIO_AF3_TIM10)      || ((AF) == GPIO_AF3_TIM11)      || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF5_SPI4)       || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF7_USART1)     || \
                           ((AF) == GPIO_AF7_USART2)     || ((AF) == GPIO_AF8_USART6)     || \
-                          ((AF) == GPIO_AF9_I2C2)       || ((AF) == GPIO_AF9_I2C3)       || \
+                          ((AF) == GPIO_AF9_I2C1)       || ((AF) == GPIO_AF9_I2C3)       || \
                           ((AF) == GPIO_AF10_OTG_FS)    || ((AF) == GPIO_AF15_EVENTOUT))
 #endif /* STM32F401xC || STM32F401xE */
 /*----------------------------------------------------------------------------*/
@@ -1471,14 +1471,14 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF4_I2C1)       || \
-                          ((AF) == GPIO_AF4_I2C2)       || ((AF) == GPIO_AF4_I2C3)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C3)       || \
                           ((AF) == GPIO_AF5_SPI1)       || ((AF) == GPIO_AF5_SPI2)       || \
                           ((AF) == GPIO_AF5_SPI3)       || ((AF) == GPIO_AF6_SPI4)       || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF5_SPI4)       || \
                           ((AF) == GPIO_AF6_SPI5)       || ((AF) == GPIO_AF7_SPI3)       || \
                           ((AF) == GPIO_AF7_USART1)     || ((AF) == GPIO_AF7_USART2)     || \
                           ((AF) == GPIO_AF8_USART6)     || ((AF) == GPIO_AF10_OTG_FS)    || \
-                          ((AF) == GPIO_AF9_I2C2)       || ((AF) == GPIO_AF9_I2C3)       || \
+                          ((AF) == GPIO_AF9_I2C1)       || ((AF) == GPIO_AF9_I2C3)       || \
                           ((AF) == GPIO_AF12_SDIO)      || ((AF) == GPIO_AF15_EVENTOUT))
 
 #endif /* STM32F411xE */
@@ -1492,7 +1492,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \
@@ -1524,7 +1524,7 @@
                           ((AF) == GPIO_AF1_TIM1)       || ((AF) == GPIO_AF1_TIM2)       || \
                           ((AF) == GPIO_AF2_TIM3)       || ((AF) == GPIO_AF2_TIM4)       || \
                           ((AF) == GPIO_AF2_TIM5)       || ((AF) == GPIO_AF3_TIM8)       || \
-                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C2)       || \
+                          ((AF) == GPIO_AF4_I2C1)       || ((AF) == GPIO_AF4_I2C1)       || \
                           ((AF) == GPIO_AF4_I2C3)       || ((AF) == GPIO_AF5_SPI1)       || \
                           ((AF) == GPIO_AF5_SPI2)       || ((AF) == GPIO_AF9_TIM13)      || \
                           ((AF) == GPIO_AF6_SPI3)       || ((AF) == GPIO_AF9_TIM12)      || \

@@ -234,7 +234,7 @@ extern "C" {
 #define LL_APB1_GRP1_PERIPH_UART5          RCC_APB1ENR_UART5EN
 #endif /* UART5 */
 #define LL_APB1_GRP1_PERIPH_I2C1           RCC_APB1ENR_I2C1EN
-#define LL_APB1_GRP1_PERIPH_I2C2           RCC_APB1ENR_I2C2EN
+#define LL_APB1_GRP1_PERIPH_I2C1           RCC_APB1ENR_I2C1EN
 #if defined(I2C3)
 #define LL_APB1_GRP1_PERIPH_I2C3           RCC_APB1ENR_I2C3EN
 #endif /* I2C3 */
@@ -1134,7 +1134,7 @@ __STATIC_INLINE void LL_AHB3_GRP1_DisableClockLowPower(uint32_t Periphs)
   *         APB1ENR     UART4EN       LL_APB1_GRP1_EnableClock\n
   *         APB1ENR     UART5EN       LL_APB1_GRP1_EnableClock\n
   *         APB1ENR     I2C1EN        LL_APB1_GRP1_EnableClock\n
-  *         APB1ENR     I2C2EN        LL_APB1_GRP1_EnableClock\n
+  *         APB1ENR     I2C1EN        LL_APB1_GRP1_EnableClock\n
   *         APB1ENR     I2C3EN        LL_APB1_GRP1_EnableClock\n
   *         APB1ENR     FMPI2C1EN     LL_APB1_GRP1_EnableClock\n
   *         APB1ENR     CAN1EN        LL_APB1_GRP1_EnableClock\n
@@ -1166,7 +1166,7 @@ __STATIC_INLINE void LL_AHB3_GRP1_DisableClockLowPower(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1212,7 +1212,7 @@ __STATIC_INLINE void LL_APB1_GRP1_EnableClock(uint32_t Periphs)
   *         APB1ENR     UART4EN       LL_APB1_GRP1_IsEnabledClock\n
   *         APB1ENR     UART5EN       LL_APB1_GRP1_IsEnabledClock\n
   *         APB1ENR     I2C1EN        LL_APB1_GRP1_IsEnabledClock\n
-  *         APB1ENR     I2C2EN        LL_APB1_GRP1_IsEnabledClock\n
+  *         APB1ENR     I2C1EN        LL_APB1_GRP1_IsEnabledClock\n
   *         APB1ENR     I2C3EN        LL_APB1_GRP1_IsEnabledClock\n
   *         APB1ENR     FMPI2C1EN     LL_APB1_GRP1_IsEnabledClock\n
   *         APB1ENR     CAN1EN        LL_APB1_GRP1_IsEnabledClock\n
@@ -1244,7 +1244,7 @@ __STATIC_INLINE void LL_APB1_GRP1_EnableClock(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1286,7 +1286,7 @@ __STATIC_INLINE uint32_t LL_APB1_GRP1_IsEnabledClock(uint32_t Periphs)
   *         APB1ENR     UART4EN       LL_APB1_GRP1_DisableClock\n
   *         APB1ENR     UART5EN       LL_APB1_GRP1_DisableClock\n
   *         APB1ENR     I2C1EN        LL_APB1_GRP1_DisableClock\n
-  *         APB1ENR     I2C2EN        LL_APB1_GRP1_DisableClock\n
+  *         APB1ENR     I2C1EN        LL_APB1_GRP1_DisableClock\n
   *         APB1ENR     I2C3EN        LL_APB1_GRP1_DisableClock\n
   *         APB1ENR     FMPI2C1EN     LL_APB1_GRP1_DisableClock\n
   *         APB1ENR     CAN1EN        LL_APB1_GRP1_DisableClock\n
@@ -1318,7 +1318,7 @@ __STATIC_INLINE uint32_t LL_APB1_GRP1_IsEnabledClock(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1360,7 +1360,7 @@ __STATIC_INLINE void LL_APB1_GRP1_DisableClock(uint32_t Periphs)
   *         APB1RSTR     UART4RST       LL_APB1_GRP1_ForceReset\n
   *         APB1RSTR     UART5RST       LL_APB1_GRP1_ForceReset\n
   *         APB1RSTR     I2C1RST        LL_APB1_GRP1_ForceReset\n
-  *         APB1RSTR     I2C2RST        LL_APB1_GRP1_ForceReset\n
+  *         APB1RSTR     I2C1RST        LL_APB1_GRP1_ForceReset\n
   *         APB1RSTR     I2C3RST        LL_APB1_GRP1_ForceReset\n
   *         APB1RSTR     FMPI2C1RST     LL_APB1_GRP1_ForceReset\n
   *         APB1RSTR     CAN1RST        LL_APB1_GRP1_ForceReset\n
@@ -1391,7 +1391,7 @@ __STATIC_INLINE void LL_APB1_GRP1_DisableClock(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1432,7 +1432,7 @@ __STATIC_INLINE void LL_APB1_GRP1_ForceReset(uint32_t Periphs)
   *         APB1RSTR     UART4RST       LL_APB1_GRP1_ReleaseReset\n
   *         APB1RSTR     UART5RST       LL_APB1_GRP1_ReleaseReset\n
   *         APB1RSTR     I2C1RST        LL_APB1_GRP1_ReleaseReset\n
-  *         APB1RSTR     I2C2RST        LL_APB1_GRP1_ReleaseReset\n
+  *         APB1RSTR     I2C1RST        LL_APB1_GRP1_ReleaseReset\n
   *         APB1RSTR     I2C3RST        LL_APB1_GRP1_ReleaseReset\n
   *         APB1RSTR     FMPI2C1RST     LL_APB1_GRP1_ReleaseReset\n
   *         APB1RSTR     CAN1RST        LL_APB1_GRP1_ReleaseReset\n
@@ -1463,7 +1463,7 @@ __STATIC_INLINE void LL_APB1_GRP1_ForceReset(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1504,7 +1504,7 @@ __STATIC_INLINE void LL_APB1_GRP1_ReleaseReset(uint32_t Periphs)
   *         APB1LPENR     UART4LPEN       LL_APB1_GRP1_EnableClockLowPower\n
   *         APB1LPENR     UART5LPEN       LL_APB1_GRP1_EnableClockLowPower\n
   *         APB1LPENR     I2C1LPEN        LL_APB1_GRP1_EnableClockLowPower\n
-  *         APB1LPENR     I2C2LPEN        LL_APB1_GRP1_EnableClockLowPower\n
+  *         APB1LPENR     I2C1LPEN        LL_APB1_GRP1_EnableClockLowPower\n
   *         APB1LPENR     I2C3LPEN        LL_APB1_GRP1_EnableClockLowPower\n
   *         APB1LPENR     FMPI2C1LPEN     LL_APB1_GRP1_EnableClockLowPower\n
   *         APB1LPENR     CAN1LPEN        LL_APB1_GRP1_EnableClockLowPower\n
@@ -1536,7 +1536,7 @@ __STATIC_INLINE void LL_APB1_GRP1_ReleaseReset(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)
@@ -1582,7 +1582,7 @@ __STATIC_INLINE void LL_APB1_GRP1_EnableClockLowPower(uint32_t Periphs)
   *         APB1LPENR     UART4LPEN       LL_APB1_GRP1_DisableClockLowPower\n
   *         APB1LPENR     UART5LPEN       LL_APB1_GRP1_DisableClockLowPower\n
   *         APB1LPENR     I2C1LPEN        LL_APB1_GRP1_DisableClockLowPower\n
-  *         APB1LPENR     I2C2LPEN        LL_APB1_GRP1_DisableClockLowPower\n
+  *         APB1LPENR     I2C1LPEN        LL_APB1_GRP1_DisableClockLowPower\n
   *         APB1LPENR     I2C3LPEN        LL_APB1_GRP1_DisableClockLowPower\n
   *         APB1LPENR     FMPI2C1LPEN     LL_APB1_GRP1_DisableClockLowPower\n
   *         APB1LPENR     CAN1LPEN        LL_APB1_GRP1_DisableClockLowPower\n
@@ -1614,7 +1614,7 @@ __STATIC_INLINE void LL_APB1_GRP1_EnableClockLowPower(uint32_t Periphs)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART4 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_UART5 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
-  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C2
+  *         @arg @ref LL_APB1_GRP1_PERIPH_I2C1
   *         @arg @ref LL_APB1_GRP1_PERIPH_I2C3 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_FMPI2C1 (*)
   *         @arg @ref LL_APB1_GRP1_PERIPH_CAN1 (*)

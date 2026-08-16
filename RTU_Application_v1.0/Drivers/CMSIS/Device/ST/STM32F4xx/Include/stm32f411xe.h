@@ -103,8 +103,8 @@ typedef enum
   TIM4_IRQn                   = 30,     /*!< TIM4 global Interrupt                                             */
   I2C1_EV_IRQn                = 31,     /*!< I2C1 Event Interrupt                                              */
   I2C1_ER_IRQn                = 32,     /*!< I2C1 Error Interrupt                                              */
-  I2C2_EV_IRQn                = 33,     /*!< I2C2 Event Interrupt                                              */
-  I2C2_ER_IRQn                = 34,     /*!< I2C2 Error Interrupt                                              */
+  I2C1_EV_IRQn                = 33,     /*!< I2C1 Event Interrupt                                              */
+  I2C1_ER_IRQn                = 34,     /*!< I2C1 Error Interrupt                                              */
   SPI1_IRQn                   = 35,     /*!< SPI1 global Interrupt                                             */
   SPI2_IRQn                   = 36,     /*!< SPI2 global Interrupt                                             */
   USART1_IRQn                 = 37,     /*!< USART1 global Interrupt                                           */
@@ -667,7 +667,7 @@ typedef struct
 #define I2S3ext_BASE          (APB1PERIPH_BASE + 0x4000UL)
 #define USART2_BASE           (APB1PERIPH_BASE + 0x4400UL)
 #define I2C1_BASE             (APB1PERIPH_BASE + 0x5400UL)
-#define I2C2_BASE             (APB1PERIPH_BASE + 0x5800UL)
+#define I2C1_BASE             (APB1PERIPH_BASE + 0x5800UL)
 #define I2C3_BASE             (APB1PERIPH_BASE + 0x5C00UL)
 #define PWR_BASE              (APB1PERIPH_BASE + 0x7000UL)
 
@@ -760,7 +760,7 @@ typedef struct
 #define I2S3ext             ((SPI_TypeDef *) I2S3ext_BASE)
 #define USART2              ((USART_TypeDef *) USART2_BASE)
 #define I2C1                ((I2C_TypeDef *) I2C1_BASE)
-#define I2C2                ((I2C_TypeDef *) I2C2_BASE)
+#define I2C1                ((I2C_TypeDef *) I2C1_BASE)
 #define I2C3                ((I2C_TypeDef *) I2C3_BASE)
 #define PWR                 ((PWR_TypeDef *) PWR_BASE)
 #define TIM1                ((TIM_TypeDef *) TIM1_BASE)
@@ -4226,9 +4226,9 @@ typedef struct
 #define RCC_APB1RSTR_I2C1RST_Pos           (21U)
 #define RCC_APB1RSTR_I2C1RST_Msk           (0x1UL << RCC_APB1RSTR_I2C1RST_Pos)  /*!< 0x00200000 */
 #define RCC_APB1RSTR_I2C1RST               RCC_APB1RSTR_I2C1RST_Msk
-#define RCC_APB1RSTR_I2C2RST_Pos           (22U)
-#define RCC_APB1RSTR_I2C2RST_Msk           (0x1UL << RCC_APB1RSTR_I2C2RST_Pos)  /*!< 0x00400000 */
-#define RCC_APB1RSTR_I2C2RST               RCC_APB1RSTR_I2C2RST_Msk
+#define RCC_APB1RSTR_I2C1RST_Pos           (22U)
+#define RCC_APB1RSTR_I2C1RST_Msk           (0x1UL << RCC_APB1RSTR_I2C1RST_Pos)  /*!< 0x00400000 */
+#define RCC_APB1RSTR_I2C1RST               RCC_APB1RSTR_I2C1RST_Msk
 #define RCC_APB1RSTR_I2C3RST_Pos           (23U)
 #define RCC_APB1RSTR_I2C3RST_Msk           (0x1UL << RCC_APB1RSTR_I2C3RST_Pos)  /*!< 0x00800000 */
 #define RCC_APB1RSTR_I2C3RST               RCC_APB1RSTR_I2C3RST_Msk
@@ -4343,9 +4343,9 @@ typedef struct
 #define RCC_APB1ENR_I2C1EN_Pos             (21U)
 #define RCC_APB1ENR_I2C1EN_Msk             (0x1UL << RCC_APB1ENR_I2C1EN_Pos)    /*!< 0x00200000 */
 #define RCC_APB1ENR_I2C1EN                 RCC_APB1ENR_I2C1EN_Msk
-#define RCC_APB1ENR_I2C2EN_Pos             (22U)
-#define RCC_APB1ENR_I2C2EN_Msk             (0x1UL << RCC_APB1ENR_I2C2EN_Pos)    /*!< 0x00400000 */
-#define RCC_APB1ENR_I2C2EN                 RCC_APB1ENR_I2C2EN_Msk
+#define RCC_APB1ENR_I2C1EN_Pos             (22U)
+#define RCC_APB1ENR_I2C1EN_Msk             (0x1UL << RCC_APB1ENR_I2C1EN_Pos)    /*!< 0x00400000 */
+#define RCC_APB1ENR_I2C1EN                 RCC_APB1ENR_I2C1EN_Msk
 #define RCC_APB1ENR_I2C3EN_Pos             (23U)
 #define RCC_APB1ENR_I2C3EN_Msk             (0x1UL << RCC_APB1ENR_I2C3EN_Pos)    /*!< 0x00800000 */
 #define RCC_APB1ENR_I2C3EN                 RCC_APB1ENR_I2C3EN_Msk
@@ -4462,9 +4462,9 @@ typedef struct
 #define RCC_APB1LPENR_I2C1LPEN_Pos         (21U)
 #define RCC_APB1LPENR_I2C1LPEN_Msk         (0x1UL << RCC_APB1LPENR_I2C1LPEN_Pos)  /*!< 0x00200000 */
 #define RCC_APB1LPENR_I2C1LPEN             RCC_APB1LPENR_I2C1LPEN_Msk
-#define RCC_APB1LPENR_I2C2LPEN_Pos         (22U)
-#define RCC_APB1LPENR_I2C2LPEN_Msk         (0x1UL << RCC_APB1LPENR_I2C2LPEN_Pos)  /*!< 0x00400000 */
-#define RCC_APB1LPENR_I2C2LPEN             RCC_APB1LPENR_I2C2LPEN_Msk
+#define RCC_APB1LPENR_I2C1LPEN_Pos         (22U)
+#define RCC_APB1LPENR_I2C1LPEN_Msk         (0x1UL << RCC_APB1LPENR_I2C1LPEN_Pos)  /*!< 0x00400000 */
+#define RCC_APB1LPENR_I2C1LPEN             RCC_APB1LPENR_I2C1LPEN_Msk
 #define RCC_APB1LPENR_I2C3LPEN_Pos         (23U)
 #define RCC_APB1LPENR_I2C3LPEN_Msk         (0x1UL << RCC_APB1LPENR_I2C3LPEN_Pos)  /*!< 0x00800000 */
 #define RCC_APB1LPENR_I2C3LPEN             RCC_APB1LPENR_I2C3LPEN_Msk
@@ -6939,9 +6939,9 @@ typedef struct
 #define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Pos    (21U)
 #define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Msk    (0x1UL << DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Pos) /*!< 0x00200000 */
 #define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT        DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Msk
-#define DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT_Pos    (22U)
-#define DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT_Msk    (0x1UL << DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT_Pos) /*!< 0x00400000 */
-#define DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT        DBGMCU_APB1_FZ_DBG_I2C2_SMBUS_TIMEOUT_Msk
+#define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Pos    (22U)
+#define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Msk    (0x1UL << DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Pos) /*!< 0x00400000 */
+#define DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT        DBGMCU_APB1_FZ_DBG_I2C1_SMBUS_TIMEOUT_Msk
 #define DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT_Pos    (23U)
 #define DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT_Msk    (0x1UL << DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT_Pos) /*!< 0x00800000 */
 #define DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT        DBGMCU_APB1_FZ_DBG_I2C3_SMBUS_TIMEOUT_Msk
@@ -8314,7 +8314,7 @@ typedef struct
 
 /******************************** I2C Instances *******************************/
 #define IS_I2C_ALL_INSTANCE(INSTANCE) (((INSTANCE) == I2C1) || \
-                                       ((INSTANCE) == I2C2) || \
+                                       ((INSTANCE) == I2C1) || \
                                        ((INSTANCE) == I2C3))
 
 /******************************* SMBUS Instances ******************************/
