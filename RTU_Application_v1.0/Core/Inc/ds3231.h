@@ -1,12 +1,12 @@
 /*
  * ds3231.h
  *
- *  Created on: Mar 5, 2026
+ *  Created on: Aug 18, 2026
  *      Author: Rubin Khadka
  */
 
-#ifndef DS3231_H_
-#define DS3231_H_
+#ifndef INC_DS3231_H_
+#define INC_DS3231_H_
 
 #include "stdint.h"
 
@@ -61,4 +61,4 @@ uint8_t DS3231_CheckOscillatorStop(void);
 uint8_t DS3231_DecToBcd(uint8_t val);
 uint8_t DS3231_BcdToDec(uint8_t val);
 
-#endif /* DS3231_H_ */
+#endif /* INC_DS3231_H_ */
