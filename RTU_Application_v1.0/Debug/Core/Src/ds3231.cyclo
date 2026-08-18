@@ -1,0 +1,14 @@
+../Core/Src/ds3231.c:20:9:DS3231_Init	4
+../Core/Src/ds3231.c:59:9:DS3231_DecToBcd	1
+../Core/Src/ds3231.c:64:9:DS3231_BcdToDec	1
+../Core/Src/ds3231.c:69:9:DS3231_SetTime	1
+../Core/Src/ds3231.c:86:9:DS3231_GetTime	2
+../Core/Src/ds3231.c:106:7:DS3231_GetTemperature	3
+../Core/Src/ds3231.c:127:9:DS3231_ForceTempConv	5
+../Core/Src/ds3231.c:150:9:DS3231_CheckOscillatorStop	2
+../Core/Src/ds3231.c:160:9:DS3231_SetAlarm1	1
+../Core/Src/ds3231.c:174:9:DS3231_SetAlarm2	1
+../Core/Src/ds3231.c:187:16:DS3231_WriteReg	5
+../Core/Src/ds3231.c:219:16:DS3231_ReadReg	2
+../Core/Src/ds3231.c:229:16:DS3231_WriteMulti	6
+../Core/Src/ds3231.c:264:16:DS3231_ReadMulti	2
