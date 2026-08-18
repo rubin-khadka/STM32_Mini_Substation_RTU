@@ -36,13 +36,13 @@
 
 // Time structure
 typedef struct {
-    uint8_t seconds;      // 0-59
-    uint8_t minutes;      // 0-59
-    uint8_t hour;         // 0-23
-    uint8_t dayofweek;    // 1-7 (1 = Sunday)
-    uint8_t dayofmonth;   // 1-31
-    uint8_t month;        // 1-12
-    uint8_t year;         // 0-99 (2000-2099)
+	uint8_t seconds;      // 0-59
+	uint8_t minutes;      // 0-59
+	uint8_t hour;         // 0-23
+	uint8_t dayofweek;    // 1-7 (1 = Sunday)
+	uint8_t dayofmonth;   // 1-31
+	uint8_t month;        // 1-12
+	uint8_t year;         // 0-99 (2000-2099)
 } DS3231_Time_t;
 
 extern DS3231_Time_t current_time;

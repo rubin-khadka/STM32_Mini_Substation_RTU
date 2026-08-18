@@ -25,7 +25,6 @@ typedef enum {
 #define I2C_WRITE       0
 #define I2C_READ        1
 
-
 // Function Protoypes
 void I2C1_Init(void);
 I2C_Status I2C1_Start(void);
