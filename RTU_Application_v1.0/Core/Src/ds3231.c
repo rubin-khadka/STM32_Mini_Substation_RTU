@@ -11,10 +11,6 @@
 DS3231_Time_t current_time;
 
 // Internal helper functions
-static uint8_t DS3231_WriteReg(uint8_t reg, uint8_t data);
-static uint8_t DS3231_ReadReg(uint8_t reg, uint8_t *data);
-static uint8_t DS3231_WriteMulti(uint8_t reg, uint8_t *data, uint8_t len);
-static uint8_t DS3231_ReadMulti(uint8_t reg, uint8_t *data, uint8_t len);
 
 // Initialize DS3231
 uint8_t DS3231_Init(void) {
@@ -184,7 +180,7 @@ uint8_t DS3231_SetAlarm2(uint8_t hour, uint8_t min, uint8_t mode) {
 }
 
 // Write a single register on DS3231
-static uint8_t DS3231_WriteReg(uint8_t reg, uint8_t data) {
+uint8_t DS3231_WriteReg(uint8_t reg, uint8_t data) {
 	I2C_Status result;
 
 	result = I2C1_Start();
@@ -216,7 +212,7 @@ static uint8_t DS3231_WriteReg(uint8_t reg, uint8_t data) {
 }
 
 // Read a single register from DS3231
-static uint8_t DS3231_ReadReg(uint8_t reg, uint8_t *data) {
+uint8_t DS3231_ReadReg(uint8_t reg, uint8_t *data) {
 	// Use ReadBurst for single byte read
 	if (I2C1_ReadBurst(DS3231_ADDR, reg, data, 1) != I2C_OK) {
 		return DS3231_ERROR;
@@ -226,7 +222,7 @@ static uint8_t DS3231_ReadReg(uint8_t reg, uint8_t *data) {
 }
 
 // Write multiple registers starting from 'reg'
-static uint8_t DS3231_WriteMulti(uint8_t reg, uint8_t *data, uint8_t len) {
+uint8_t DS3231_WriteMulti(uint8_t reg, uint8_t *data, uint8_t len) {
 	I2C_Status result;
 	uint8_t i;
 
@@ -261,7 +257,7 @@ static uint8_t DS3231_WriteMulti(uint8_t reg, uint8_t *data, uint8_t len) {
 }
 
 // Read multiple registers starting from 'reg'
-static uint8_t DS3231_ReadMulti(uint8_t reg, uint8_t *data, uint8_t len) {
+uint8_t DS3231_ReadMulti(uint8_t reg, uint8_t *data, uint8_t len) {
 	// Use ReadBurst for multi-byte read
 	if (I2C1_ReadBurst(DS3231_ADDR, reg, data, len) != I2C_OK) {
 		return DS3231_ERROR;

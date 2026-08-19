@@ -61,4 +61,9 @@ uint8_t DS3231_CheckOscillatorStop(void);
 uint8_t DS3231_DecToBcd(uint8_t val);
 uint8_t DS3231_BcdToDec(uint8_t val);
 
+uint8_t DS3231_WriteReg(uint8_t reg, uint8_t data);
+uint8_t DS3231_ReadReg(uint8_t reg, uint8_t *data);
+uint8_t DS3231_WriteMulti(uint8_t reg, uint8_t *data, uint8_t len);
+uint8_t DS3231_ReadMulti(uint8_t reg, uint8_t *data, uint8_t len);
+
 #endif /* INC_DS3231_H_ */
