@@ -12,7 +12,6 @@ void I2C1_Init(void) {
 	// Enable Clocks
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN ;
 	RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
-	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;
 
 	// Configure GPIO
 	GPIOB->MODER &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
@@ -25,7 +24,8 @@ void I2C1_Init(void) {
 	GPIOB->OSPEEDR |= ((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
 
 	// No internal pull up
-	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
+//	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
+	GPIOB->PUPDR |= ((1UL << (6U * 2U)) | (1UL << (7U * 2U)));  // Pull-up
 
 	// Alternate function for I2C
 	GPIOB->AFR[0] &= ~((0xFUL << (6U * 4U)) | (0xFUL << (7U * 4U)));

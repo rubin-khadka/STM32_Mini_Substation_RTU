@@ -11,3 +11,4 @@
 ../Core/Src/usart1.c:147:9:USART1_GetChar	1
 ../Core/Src/usart1.c:151:6:USART1_SendNumber	4
 ../Core/Src/usart1.c:173:6:USART1_SendHex	1
+../Core/Src/usart1.c:181:6:USART1_IRQHandler	6
