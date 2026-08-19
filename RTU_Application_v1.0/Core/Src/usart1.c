@@ -21,12 +21,11 @@ void USART1_Init(void) {
 	// Enable clocks
 	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;    // GPIOA clock
 	RCC->APB2ENR |= RCC_APB2ENR_USART1EN;   // USART1 clock
-	RCC->APB2ENR |= RCC_APB2ENR_SYSCFGEN;   // SYSCFG clock
 
 	// Configure PA9 as TX (Alternate function push-pull)
 	// PA9 = TX
 	GPIOA->MODER &= ~GPIO_MODER_MODER9;           // Clear mode bits
-	GPIOA->MODER |= GPIO_MODER_MODER9_1;          // AF mode (10)
+	GPIOA->MODER |= GPIO_MODER_MODER9_1;         // AF mode (10)
 
 	GPIOA->OTYPER &= ~GPIO_OTYPER_OT_9;           // Push-pull (not open-drain)
 
@@ -179,24 +178,24 @@ void USART1_SendHex(uint8_t value) {
 	USART1_SendString(hex);
 }
 
-//void USART1_IRQHandler(void) {
-//	// Handle received data - WRITE to RX buffer
-//	if (USART1->SR & USART_SR_RXNE) {
-//		uint8_t data = USART1->DR;
-//		// Write to RX buffer (ignore if full - data lost)
-//		USART1_BufferWrite(&usart1_rx_buf, data);
-//	}
-//
-//	// Handle transmit - READ from TX buffer
-//	if ((USART1->CR1 & USART_CR1_TXEIE) && (USART1->SR & USART_SR_TXE)) {
-//		if (!USART1_BufferEmpty(&usart1_tx_buf)) {
-//			// Read from TX buffer and send
-//			USART1->DR = USART1_BufferRead(&usart1_tx_buf);
-//		}
-//
-//		// Disable TX interrupt if buffer is empty
-//		if (USART1_BufferEmpty(&usart1_tx_buf)) {
-//			USART1->CR1 &= ~USART_CR1_TXEIE;
-//		}
-//	}
-//}
+void USART1_IRQHandler(void) {
+	// Handle received data - WRITE to RX buffer
+	if (USART1->SR & USART_SR_RXNE) {
+		uint8_t data = USART1->DR;
+		// Write to RX buffer (ignore if full - data lost)
+		USART1_BufferWrite(&usart1_rx_buf, data);
+	}
+
+	// Handle transmit - READ from TX buffer
+	if ((USART1->CR1 & USART_CR1_TXEIE) && (USART1->SR & USART_SR_TXE)) {
+		if (!USART1_BufferEmpty(&usart1_tx_buf)) {
+			// Read from TX buffer and send
+			USART1->DR = USART1_BufferRead(&usart1_tx_buf);
+		}
+
+		// Disable TX interrupt if buffer is empty
+		if (USART1_BufferEmpty(&usart1_tx_buf)) {
+			USART1->CR1 &= ~USART_CR1_TXEIE;
+		}
+	}
+}
