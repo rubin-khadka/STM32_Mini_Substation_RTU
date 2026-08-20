@@ -24,8 +24,7 @@ void I2C1_Init(void) {
 	GPIOB->OSPEEDR |= ((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
 
 	// No internal pull up
-//	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
-	GPIOB->PUPDR |= ((1UL << (6U * 2U)) | (1UL << (7U * 2U)));  // Pull-up
+	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
 
 	// Alternate function for I2C
 	GPIOB->AFR[0] &= ~((0xFUL << (6U * 4U)) | (0xFUL << (7U * 4U)));

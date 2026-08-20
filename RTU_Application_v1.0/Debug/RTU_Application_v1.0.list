@@ -423,12 +423,11 @@ void I2C1_Init(void) {
  800054e:	6093      	str	r3, [r2, #8]
 
 	// No internal pull up
-//	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
-	GPIOB->PUPDR |= ((1UL << (6U * 2U)) | (1UL << (7U * 2U)));  // Pull-up
+	GPIOB->PUPDR &= ~((3UL << (6U * 2U)) | (3UL << (7U * 2U)));
  8000550:	4b18      	ldr	r3, [pc, #96]	@ (80005b4 <I2C1_Init+0xb0>)
  8000552:	68db      	ldr	r3, [r3, #12]
  8000554:	4a17      	ldr	r2, [pc, #92]	@ (80005b4 <I2C1_Init+0xb0>)
- 8000556:	f443 43a0 	orr.w	r3, r3, #20480	@ 0x5000
+ 8000556:	f423 4370 	bic.w	r3, r3, #61440	@ 0xf000
  800055a:	60d3      	str	r3, [r2, #12]
 
 	// Alternate function for I2C
