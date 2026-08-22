@@ -126,12 +126,13 @@ int main(void) {
 		// Try sending address
 		result = I2C1_SendAddr(0x68, 0);  // DS3231 address, Write
 		if (result == I2C_OK) {
+			I2C1_Stop();
 			USART1_SendString("Address: ACK received!\r\n");
 		} else {
+			I2C1_Stop();
 			USART1_SendString("Address: NACK or error!\r\n");
 		}
 
-		I2C1_Stop();
 	} else {
 		USART1_SendString("START: FAILED!\r\n");
 	}
