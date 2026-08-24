@@ -10,7 +10,7 @@
 
 void I2C1_Init(void) {
 	// Enable Clocks
-	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN ;
+	RCC->AHB1ENR |= RCC_AHB1ENR_GPIOBEN;
 	RCC->APB1ENR |= RCC_APB1ENR_I2C1EN;
 
 	// Configure GPIO
@@ -146,7 +146,6 @@ I2C_Status I2C1_WriteByteWaitComplete(uint8_t data) {
 	return I2C_OK;
 }
 
-// Brust Read
 I2C_Status I2C1_ReadBurst(uint8_t devAddr, uint8_t regAddr, uint8_t *buf,
 		uint8_t len) {
 	I2C_Status status;
@@ -170,13 +169,18 @@ I2C_Status I2C1_ReadBurst(uint8_t devAddr, uint8_t regAddr, uint8_t *buf,
 		return status;
 
 	/* Repeated START + Read */
-	status = I2C1_Start();
+	status = I2C1_RepeatedStart();
 	if (status != I2C_OK)
 		return status;
 
 	status = I2C1_SendAddr(devAddr, 1U);
 	if (status != I2C_OK)
 		return status;
+
+	/* Enable ACK for multi‑byte reads */
+	if (len > 1U) {
+		I2C1->CR1 |= I2C_CR1_ACK;
+	}
 
 	/* Receive bytes */
 	if (len == 1U) {
@@ -235,10 +239,32 @@ I2C_Status I2C1_ReadBurst(uint8_t devAddr, uint8_t regAddr, uint8_t *buf,
 		}
 		buf[len - 2U] = (uint8_t) I2C1->DR;
 
-		/* STOP before reading last byte (byte N) */
+		/* STOP before reading last byte */
 		I2C1->CR1 |= I2C_CR1_STOP;
+
+		/* Wait for last byte to be received */
+		timeout = I2C_TIMEOUT;
+		while (!(I2C1->SR1 & I2C_SR1_RXNE)) {
+			if (--timeout == 0U)
+				return I2C_ERR_TIMEOUT;
+		}
 		buf[len - 1U] = (uint8_t) I2C1->DR;
 	}
 
+	return I2C_OK;
+}
+
+I2C_Status I2C1_RepeatedStart(void) {
+	uint32_t timeout = I2C_TIMEOUT;
+
+	// Do NOT wait for BUSY to clear
+	I2C1->CR1 |= I2C_CR1_START;
+
+	// Wait for Start Bit (SB) flag
+	while (!(I2C1->SR1 & I2C_SR1_SB)) {
+		if (--timeout == 0U) {
+			return I2C_ERR_START;
+		}
+	}
 	return I2C_OK;
 }

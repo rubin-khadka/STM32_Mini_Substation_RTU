@@ -34,5 +34,6 @@ I2C_Status I2C1_WriteByte(uint8_t data);
 I2C_Status I2C1_WriteByteWaitComplete(uint8_t data);
 I2C_Status I2C1_ReadBurst(uint8_t devAddr, uint8_t regAddr, uint8_t *buf,
 		uint8_t len);
+I2C_Status I2C1_RepeatedStart(void);
 
 #endif /* INC_I2C1_H_ */
