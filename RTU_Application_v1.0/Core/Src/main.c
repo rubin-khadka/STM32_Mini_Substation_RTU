@@ -107,18 +107,9 @@ int main(void) {
 	MX_SPI2_Init();
 	/* USER CODE BEGIN 2 */
 
-	// Initialize UART first
+	// Initialize Peripherals
 	USART1_Init();
-	HAL_Delay(100);
-	USART1_SendString("UART working!\r\n");
-	char buf[50];
-	sprintf(buf, "SystemCoreClock = %lu Hz\r\n", SystemCoreClock);
-	USART1_SendString(buf);
-
-	// Initialize I2C
 	I2C1_Init();
-	USART1_SendString("I2C initialized!\r\n");
-
 	DWT_Init();
 	TIMER2_Init();
 	MPU6050_Init();
