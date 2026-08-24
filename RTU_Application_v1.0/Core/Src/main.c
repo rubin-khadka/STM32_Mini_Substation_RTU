@@ -21,10 +21,14 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
+#include "dwt.h"
+#include "timer2.h"
+#include "gpio.h"
 #include "i2c1.h"
 #include "ds3231.h"
 #include "usart1.h"
-#include <string.h>
+#include <strings.h>
+#include <stdio.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,36 +110,18 @@ int main(void) {
 	USART1_Init();
 	HAL_Delay(100);
 	USART1_SendString("UART working!\r\n");
+	char buf[50];
+	sprintf(buf, "SystemCoreClock = %lu Hz\r\n", SystemCoreClock);
+	USART1_SendString(buf);
 
 	// Initialize I2C
 	I2C1_Init();
 	USART1_SendString("I2C initialized!\r\n");
 
-	// Check bus state
-	if (I2C1->SR2 & I2C_SR2_BUSY) {
-		USART1_SendString("I2C Bus: BUSY\r\n");
-	} else {
-		USART1_SendString("I2C Bus: FREE\r\n");
-	}
+	DWT_Init();
+	TIMER2_Init();
 
-	// Try START condition
-	I2C_Status result = I2C1_Start();
-	if (result == I2C_OK) {
-		USART1_SendString("START: OK\r\n");
-
-		// Try sending address
-		result = I2C1_SendAddr(0x68, 0);  // DS3231 address, Write
-		if (result == I2C_OK) {
-			I2C1_Stop();
-			USART1_SendString("Address: ACK received!\r\n");
-		} else {
-			I2C1_Stop();
-			USART1_SendString("Address: NACK or error!\r\n");
-		}
-
-	} else {
-		USART1_SendString("START: FAILED!\r\n");
-	}
+	GPIO_Init();
 
 	/* USER CODE END 2 */
 
@@ -145,7 +131,10 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		HAL_Delay(1000);
+		GPIOA->BSRR = GPIO_BSRR_BS_5;   // PA5 HIGH
+		TIMER2_Delay_ms(100);              // 100 µs delay
+		GPIOA->BSRR = GPIO_BSRR_BR_5;   // PA5 LOW
+		TIMER2_Delay_ms(100);              // 100 µs delay
 	}
 	/* USER CODE END 3 */
 }

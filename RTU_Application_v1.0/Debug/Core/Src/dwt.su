@@ -1,0 +1,4 @@
+../Core/Src/dwt.c:17:6:DWT_Init	4	static
+../Core/Src/dwt.c:31:10:DWT_GetTick	4	static
+../Core/Src/dwt.c:36:6:DWT_Delay_us	24	static
+../Core/Src/dwt.c:45:6:DWT_Delay_ms	16	static
