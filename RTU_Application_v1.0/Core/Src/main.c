@@ -27,6 +27,7 @@
 #include "i2c1.h"
 #include "ds3231.h"
 #include "usart1.h"
+#include "mpu6050.h"
 #include <strings.h>
 #include <stdio.h>
 /* USER CODE END Includes */
@@ -120,6 +121,7 @@ int main(void) {
 
 	DWT_Init();
 	TIMER2_Init();
+	MPU6050_Init();
 
 	GPIO_Init();
 
