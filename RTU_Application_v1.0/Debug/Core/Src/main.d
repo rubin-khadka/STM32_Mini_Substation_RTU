@@ -27,7 +27,7 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
  ../Core/Inc/dwt.h ../Core/Inc/timer2.h ../Core/Inc/gpio.h \
  ../Core/Inc/i2c1.h ../Core/Inc/ds3231.h ../Core/Inc/usart1.h \
- ../Core/Inc/main.h
+ ../Core/Inc/main.h ../Core/Inc/mpu6050.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -62,3 +62,4 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/ds3231.h:
 ../Core/Inc/usart1.h:
 ../Core/Inc/main.h:
+../Core/Inc/mpu6050.h:

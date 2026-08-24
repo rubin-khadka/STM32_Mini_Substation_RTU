@@ -133,10 +133,30 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		GPIOA->BSRR = GPIO_BSRR_BS_5;   // PA5 HIGH
-		TIMER2_Delay_ms(100);              // 100 µs delay
-		GPIOA->BSRR = GPIO_BSRR_BR_5;   // PA5 LOW
-		TIMER2_Delay_ms(100);              // 100 µs delay
+		// Read all sensor data (accelerometer, gyroscope, temperature)
+		if (MPU6050_ReadAll() == 0) {
+			// Convert raw data to meaningful units
+			MPU6050_ScaleAll();
+
+			char buf[100];
+			sprintf(buf, "Accel: X=%.2f Y=%.2f Z=%.2f g\r\n",
+					mpu6050_scaled.accel_x, mpu6050_scaled.accel_y,
+					mpu6050_scaled.accel_z);
+			USART1_SendString(buf);
+
+			sprintf(buf, "Gyro:  X=%.2f Y=%.2f Z=%.2f deg/s\r\n",
+					mpu6050_scaled.gyro_x, mpu6050_scaled.gyro_y,
+					mpu6050_scaled.gyro_z);
+			USART1_SendString(buf);
+
+			sprintf(buf, "Temp:  %.2f C\r\n\r\n", mpu6050_scaled.temp);
+			USART1_SendString(buf);
+		} else {
+			USART1_SendString("MPU6050 read error\r\n");
+		}
+
+		// Delay 1 second between readings
+		TIMER2_Delay_ms(1000);
 	}
 	/* USER CODE END 3 */
 }

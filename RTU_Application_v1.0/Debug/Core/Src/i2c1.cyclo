@@ -4,4 +4,5 @@
 ../Core/Src/i2c1.c:82:12:I2C1_SendAddr	4
 ../Core/Src/i2c1.c:110:12:I2C1_WriteByte	4
 ../Core/Src/i2c1.c:129:12:I2C1_WriteByteWaitComplete	5
-../Core/Src/i2c1.c:150:12:I2C1_ReadBurst	21
+../Core/Src/i2c1.c:149:12:I2C1_ReadBurst	24
+../Core/Src/i2c1.c:257:12:I2C1_RepeatedStart	3
