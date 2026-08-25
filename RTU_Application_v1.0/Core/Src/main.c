@@ -162,11 +162,11 @@ int main(void) {
 
 			// Also show on LCD
 			char lcd_buf[17];
-			sprintf(lcd_buf, "Hum:%d.%d%%", hum_int, hum_dec);
+			sprintf(lcd_buf, "Hum: %d.%d%%", hum_int, hum_dec);
 			LCD_SetCursor(0, 0);
 			LCD_SendString(lcd_buf);
 
-			sprintf(lcd_buf, "Temp:%d.%d C", temp_int, temp_dec);
+			sprintf(lcd_buf, "Temp: %d.%d C", temp_int, temp_dec);
 			LCD_SetCursor(1, 0);
 			LCD_SendString(lcd_buf);
 		} else {
