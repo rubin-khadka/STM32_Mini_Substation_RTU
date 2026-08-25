@@ -1,0 +1,4 @@
+../Core/Src/dht11.c:21:6:DHT11_Init	4	static
+../Core/Src/dht11.c:36:6:DHT11_Start	8	static
+../Core/Src/dht11.c:54:5:DHT11_Check_Response	16	static
+../Core/Src/dht11.c:75:9:DHT11_Read	24	static

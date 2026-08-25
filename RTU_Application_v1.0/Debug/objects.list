@@ -1,3 +1,4 @@
+"./Core/Src/dht11.o"
 "./Core/Src/ds3231.o"
 "./Core/Src/dwt.o"
 "./Core/Src/gpio.o"
