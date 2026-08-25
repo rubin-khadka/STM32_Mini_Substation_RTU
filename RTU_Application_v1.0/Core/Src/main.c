@@ -25,6 +25,7 @@
 #include "timer2.h"
 
 #include "gpio.h"
+#include "dht11.h"
 #include "usart1.h"
 
 #include "i2c1.h"
@@ -116,6 +117,12 @@ int main(void) {
 
 	GPIO_Init();
 
+	DHT11_Init();
+
+	// Variables for DHT11 data
+	uint8_t hum_int, hum_dec, temp_int, temp_dec, checksum;
+	uint8_t valid = 0;
+
 	/* USER CODE END 2 */
 
 	/* Infinite loop */
@@ -124,6 +131,53 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
+		// 1. Start communication
+		DHT11_Start();
+
+		// 2. Check sensor response
+		if (DHT11_Check_Response()) {
+			// 3. Read 5 bytes (humidity int, humidity dec, temp int, temp dec, checksum)
+			hum_int = DHT11_Read();
+			hum_dec = DHT11_Read();
+			temp_int = DHT11_Read();
+			temp_dec = DHT11_Read();
+			checksum = DHT11_Read();
+
+			// 4. Verify checksum
+			if (checksum == (hum_int + hum_dec + temp_int + temp_dec)) {
+				valid = 1;
+			} else {
+				valid = 0;
+			}
+		} else {
+			valid = 0;
+		}
+
+		// 5. Display results
+		char buf[80];
+		if (valid) {
+			sprintf(buf, "DHT11: %d.%d %%RH, %d.%d C\r\n", hum_int, hum_dec,
+					temp_int, temp_dec);
+			USART1_SendString(buf);
+
+			// Also show on LCD
+			char lcd_buf[17];
+			sprintf(lcd_buf, "Hum:%d.%d%%", hum_int, hum_dec);
+			LCD_SetCursor(0, 0);
+			LCD_SendString(lcd_buf);
+
+			sprintf(lcd_buf, "Temp:%d.%d C", temp_int, temp_dec);
+			LCD_SetCursor(1, 0);
+			LCD_SendString(lcd_buf);
+		} else {
+			USART1_SendString("DHT11 read error\r\n");
+			LCD_Clear();
+			LCD_SetCursor(0, 0);
+			LCD_SendString("DHT11 Error");
+		}
+
+		// Wait at least 2 seconds between readings (DHT11 requirement)
+		TIMER2_Delay_ms(2000);
 	}
 	/* USER CODE END 3 */
 }
