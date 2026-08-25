@@ -28,6 +28,8 @@
 #include "ds3231.h"
 #include "usart1.h"
 #include "mpu6050.h"
+#include "lcd.h"
+
 #include <strings.h>
 #include <stdio.h>
 /* USER CODE END Includes */
@@ -112,6 +114,8 @@ int main(void) {
 	I2C1_Init();
 	DWT_Init();
 	TIMER2_Init();
+	LCD_Init();
+	DS3231_Init();
 	MPU6050_Init();
 
 	GPIO_Init();
@@ -124,11 +128,30 @@ int main(void) {
 		/* USER CODE END WHILE */
 
 		/* USER CODE BEGIN 3 */
-		// Read all sensor data (accelerometer, gyroscope, temperature)
+		// Read RTC time
+		DS3231_GetTime(&current_time);
+
+		// LCD display: time on line 1, temperature on line 2
+		char line1[17], line2[17];
+
+		// Format time as HH:MM:SS
+		sprintf(line1, "%02d:%02d:%02d", current_time.hour,
+				current_time.minutes, current_time.seconds);
+
+		// Format temperature
+		sprintf(line2, "T:%.2f C", mpu6050_scaled.temp);
+
+		LCD_SetCursor(0, 0);
+		LCD_SendString(line1);
+
+		LCD_SetCursor(1, 0);
+		LCD_SendString(line2);
+
+		// Read MPU6050 sensor
 		if (MPU6050_ReadAll() == 0) {
-			// Convert raw data to meaningful units
 			MPU6050_ScaleAll();
 
+			// UART debug output
 			char buf[100];
 			sprintf(buf, "Accel: X=%.2f Y=%.2f Z=%.2f g\r\n",
 					mpu6050_scaled.accel_x, mpu6050_scaled.accel_y,
@@ -144,10 +167,12 @@ int main(void) {
 			USART1_SendString(buf);
 		} else {
 			USART1_SendString("MPU6050 read error\r\n");
+			LCD_Clear();
+			LCD_SetCursor(0, 0);
+			LCD_SendString("Sensor Error");
 		}
 
-		// Delay 1 second between readings
-		TIMER2_Delay_ms(1000);
+		TIMER2_Delay_ms(1000);   // update once per second
 	}
 	/* USER CODE END 3 */
 }

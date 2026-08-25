@@ -1,0 +1,11 @@
+../Core/Src/lcd.c:19:13:LCD_SendNibble	24	static
+../Core/Src/lcd.c:46:6:LCD_SendCmd	16	static
+../Core/Src/lcd.c:61:6:LCD_SendData	24	static
+../Core/Src/lcd.c:73:6:LCD_Init	8	static
+../Core/Src/lcd.c:99:6:LCD_SendString	16	static
+../Core/Src/lcd.c:106:6:LCD_Clear	8	static
+../Core/Src/lcd.c:111:6:LCD_SetCursor	24	static
+../Core/Src/lcd.c:123:6:LCD_DisplayReading_Temp	24	static
+../Core/Src/lcd.c:171:6:LCD_DisplayFloat	32	static
+../Core/Src/lcd.c:221:6:LCD_DisplayAccelScaled	24	static
+../Core/Src/lcd.c:249:6:LCD_DisplayGyroScaled	24	static
