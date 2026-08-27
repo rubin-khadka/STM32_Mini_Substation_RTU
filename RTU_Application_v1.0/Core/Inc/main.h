@@ -57,12 +57,6 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
-#define RESET_Pin GPIO_PIN_3
-#define RESET_GPIO_Port GPIOA
-#define CS_Pin GPIO_PIN_4
-#define CS_GPIO_Port GPIOA
-#define SS_Pin GPIO_PIN_12
-#define SS_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 
