@@ -33,6 +33,7 @@
 #include "mpu6050.h"
 #include "lcd.h"
 #include "spi1.h"
+#include "w25q64.h"
 
 #include <strings.h>
 #include <stdio.h>
@@ -103,39 +104,25 @@ int main(void) {
 
 	// Initialize Peripherals
 	USART1_Init();
-	// Initialize SPI1
 	SPI1_Init();
+	// Variables for JEDEC ID
+	uint8_t manufacturerID, memoryType, capacity;
 
-	// Optional: print a startup message
-	USART1_SendString("SPI Loopback Test\r\n");
+	// Small delay for flash power-up (if not done elsewhere)
+	for (volatile uint32_t i = 0; i < 100000U; i++)
+		;
 
-	// Test byte
-	uint8_t txByte = 0xA5;   // 1010 0101
-	uint8_t rxByte = 0x00;
+	// Read JEDEC ID
+	W25Q64_ReadJEDEC_ID(&manufacturerID, &memoryType, &capacity);
 
-	// Perform the transfer with CS toggled (good practice)
-	SPI1_CS_Select();
-	SPI_Status status = SPI1_TransferByte(txByte, &rxByte);
-	SPI1_CS_Deselect();
-
-	// Print result
-	if (status == SPI_OK && rxByte == txByte) {
-		USART1_SendString("PASS: SPI loopback OK\r\n");
-		USART1_SendString("Sent: 0x");
-		USART1_SendHex(txByte);
-		USART1_SendString(", Received: 0x");
-		USART1_SendHex(rxByte);
-		USART1_SendString("\r\n");
-	} else {
-		USART1_SendString("FAIL: SPI loopback error\r\n");
-		USART1_SendString("Status: ");
-		USART1_SendNumber((uint32_t) status);
-		USART1_SendString(", Sent: 0x");
-		USART1_SendHex(txByte);
-		USART1_SendString(", Received: 0x");
-		USART1_SendHex(rxByte);
-		USART1_SendString("\r\n");
-	}
+	// Print results over UART
+	USART1_SendString("JEDEC ID: ");
+	USART1_SendHex(manufacturerID);
+	USART1_SendString(" ");
+	USART1_SendHex(memoryType);
+	USART1_SendString(" ");
+	USART1_SendHex(capacity);
+	USART1_SendString("\r\n");
 
 	/* USER CODE END 2 */
 
