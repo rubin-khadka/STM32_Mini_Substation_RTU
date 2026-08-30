@@ -1,1 +1,9 @@
-../Core/Src/w25q64.c:12:6:W25Q64_ReadJEDEC_ID	1
+../Core/Src/w25q64.c:13:6:W25Q64_ReadJEDEC_ID	1
+../Core/Src/w25q64.c:29:9:W25Q64_ReadStatus	1
+../Core/Src/w25q64.c:42:6:W25Q64_WaitBusy	2
+../Core/Src/w25q64.c:49:6:W25Q64_WriteEnable	1
+../Core/Src/w25q64.c:57:6:W25Q64_ReadData	1
+../Core/Src/w25q64.c:69:6:W25Q64_SectorErase	1
+../Core/Src/w25q64.c:84:6:W25Q64_ChipErase	1
+../Core/Src/w25q64.c:97:6:W25Q64_PageProgram	2
+../Core/Src/w25q64.c:116:6:W25Q64_WriteData	4

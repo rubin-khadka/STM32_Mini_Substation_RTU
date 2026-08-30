@@ -27,25 +27,25 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   ALLOC
  11 .ARM.attributes 00000030  00000000  00000000  000071d4  2**0
                   CONTENTS, READONLY
- 12 .debug_info   0000509b  00000000  00000000  00007204  2**0
+ 12 .debug_info   000052b2  00000000  00000000  00007204  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 13 .debug_abbrev 000015f5  00000000  00000000  0000c29f  2**0
+ 13 .debug_abbrev 00001651  00000000  00000000  0000c4b6  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 14 .debug_aranges 000005b8  00000000  00000000  0000d898  2**3
+ 14 .debug_aranges 000005f8  00000000  00000000  0000db08  2**3
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 15 .debug_rnglists 00000413  00000000  00000000  0000de50  2**0
+ 15 .debug_rnglists 00000444  00000000  00000000  0000e100  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 16 .debug_macro  00002ff8  00000000  00000000  0000e263  2**0
+ 16 .debug_macro  00003028  00000000  00000000  0000e544  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 17 .debug_line   00006ca6  00000000  00000000  0001125b  2**0
+ 17 .debug_line   00006e3c  00000000  00000000  0001156c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 18 .debug_str    0008547b  00000000  00000000  00017f01  2**0
+ 18 .debug_str    00085639  00000000  00000000  000183a8  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 19 .comment      00000043  00000000  00000000  0009d37c  2**0
+ 19 .comment      00000043  00000000  00000000  0009d9e1  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  00002350  00000000  00000000  0009d3c0  2**2
+ 20 .debug_frame  00002468  00000000  00000000  0009da24  2**2
                   CONTENTS, READONLY, DEBUGGING, OCTETS
- 21 .debug_line_str 00000072  00000000  00000000  0009f710  2**0
+ 21 .debug_line_str 00000072  00000000  00000000  0009fe8c  2**0
                   CONTENTS, READONLY, DEBUGGING, OCTETS
 
 Disassembly of section .text:
@@ -3252,10 +3252,10 @@ void USART1_IRQHandler(void) {
  80019d8:	20000404 	.word	0x20000404
 
 080019dc <W25Q64_ReadJEDEC_ID>:
-#include "main.h"
 #include "w25q64.h"
 #include "spi1.h"
 
+// Read the JEDEC ID.
 void W25Q64_ReadJEDEC_ID(uint8_t *manufacturerID, uint8_t *memoryType,
 		uint8_t *capacity) {
  80019dc:	b580      	push	{r7, lr}
@@ -3275,29 +3275,21 @@ void W25Q64_ReadJEDEC_ID(uint8_t *manufacturerID, uint8_t *memoryType,
  80019f6:	460a      	mov	r2, r1
  80019f8:	709a      	strb	r2, [r3, #2]
 
-	// Select flash (CS low)
 	SPI1_CS_Select();
  80019fa:	f7ff fbf1 	bl	80011e0 <SPI1_CS_Select>
-
-	// Send command byte
 	SPI1_Transmit(&cmd, 1U);
  80019fe:	f107 0317 	add.w	r3, r7, #23
  8001a02:	2101      	movs	r1, #1
  8001a04:	4618      	mov	r0, r3
  8001a06:	f7ff fc47 	bl	8001298 <SPI1_Transmit>
-
-	// Read 3 bytes (dummy clocks)
 	SPI1_Receive(rx, 3U);
  8001a0a:	f107 0314 	add.w	r3, r7, #20
  8001a0e:	2103      	movs	r1, #3
  8001a10:	4618      	mov	r0, r3
  8001a12:	f7ff fc6c 	bl	80012ee <SPI1_Receive>
-
-	// Deselect flash (CS high)
 	SPI1_CS_Deselect();
  8001a16:	f7ff fbf1 	bl	80011fc <SPI1_CS_Deselect>
 
-	// Extract IDs
 	*manufacturerID = rx[0];
  8001a1a:	7d3a      	ldrb	r2, [r7, #20]
  8001a1c:	68fb      	ldr	r3, [r7, #12]
