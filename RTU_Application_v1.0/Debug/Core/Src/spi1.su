@@ -1,0 +1,7 @@
+../Core/Src/spi1.c:12:6:SPI1_Init	4	static
+../Core/Src/spi1.c:87:6:SPI1_CS_Select	4	static
+../Core/Src/spi1.c:92:6:SPI1_CS_Deselect	4	static
+../Core/Src/spi1.c:97:12:SPI1_TransferByte	24	static
+../Core/Src/spi1.c:128:12:SPI1_Transmit	24	static
+../Core/Src/spi1.c:143:12:SPI1_Receive	24	static
+../Core/Src/spi1.c:158:12:SPI1_TransmitReceive	32	static

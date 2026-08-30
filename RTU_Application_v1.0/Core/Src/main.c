@@ -32,6 +32,7 @@
 #include "ds3231.h"
 #include "mpu6050.h"
 #include "lcd.h"
+#include "spi1.h"
 
 #include <strings.h>
 #include <stdio.h>
@@ -71,175 +72,142 @@ static void MX_GPIO_Init(void);
 /* USER CODE END 0 */
 
 /**
-  * @brief  The application entry point.
-  * @retval int
-  */
-int main(void)
-{
+ * @brief  The application entry point.
+ * @retval int
+ */
+int main(void) {
 
-  /* USER CODE BEGIN 1 */
+	/* USER CODE BEGIN 1 */
 
-  /* USER CODE END 1 */
+	/* USER CODE END 1 */
 
-  /* MCU Configuration--------------------------------------------------------*/
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE BEGIN Init */
+	/* USER CODE BEGIN Init */
 
-  /* USER CODE END Init */
+	/* USER CODE END Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* USER CODE BEGIN SysInit */
+	/* USER CODE BEGIN SysInit */
 
-  /* USER CODE END SysInit */
+	/* USER CODE END SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  /* USER CODE BEGIN 2 */
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	/* USER CODE BEGIN 2 */
 
 	// Initialize Peripherals
 	USART1_Init();
-	I2C1_Init();
-	DWT_Init();
-	TIMER2_Init();
-	LCD_Init();
-//	DS3231_Init();
-//	MPU6050_Init();
+	// Initialize SPI1
+	SPI1_Init();
 
-	GPIO_Init();
+	// Optional: print a startup message
+	USART1_SendString("SPI Loopback Test\r\n");
 
-	DHT11_Init();
+	// Test byte
+	uint8_t txByte = 0xA5;   // 1010 0101
+	uint8_t rxByte = 0x00;
 
-	// Variables for DHT11 data
-	uint8_t hum_int, hum_dec, temp_int, temp_dec, checksum;
-	uint8_t valid = 0;
+	// Perform the transfer with CS toggled (good practice)
+	SPI1_CS_Select();
+	SPI_Status status = SPI1_TransferByte(txByte, &rxByte);
+	SPI1_CS_Deselect();
 
-  /* USER CODE END 2 */
-
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-	while (1) {
-    /* USER CODE END WHILE */
-
-    /* USER CODE BEGIN 3 */
-		// 1. Start communication
-		DHT11_Start();
-
-		// 2. Check sensor response
-		if (DHT11_Check_Response()) {
-			// 3. Read 5 bytes (humidity int, humidity dec, temp int, temp dec, checksum)
-			hum_int = DHT11_Read();
-			hum_dec = DHT11_Read();
-			temp_int = DHT11_Read();
-			temp_dec = DHT11_Read();
-			checksum = DHT11_Read();
-
-			// 4. Verify checksum
-			if (checksum == (hum_int + hum_dec + temp_int + temp_dec)) {
-				valid = 1;
-			} else {
-				valid = 0;
-			}
-		} else {
-			valid = 0;
-		}
-
-		// 5. Display results
-		char buf[80];
-		if (valid) {
-			sprintf(buf, "DHT11: %d.%d %%RH, %d.%d C\r\n", hum_int, hum_dec,
-					temp_int, temp_dec);
-			USART1_SendString(buf);
-
-			// Also show on LCD
-			char lcd_buf[17];
-			sprintf(lcd_buf, "Hum: %d.%d%%", hum_int, hum_dec);
-			LCD_SetCursor(0, 0);
-			LCD_SendString(lcd_buf);
-
-			sprintf(lcd_buf, "Temp: %d.%d C", temp_int, temp_dec);
-			LCD_SetCursor(1, 0);
-			LCD_SendString(lcd_buf);
-		} else {
-			USART1_SendString("DHT11 read error\r\n");
-			LCD_Clear();
-			LCD_SetCursor(0, 0);
-			LCD_SendString("DHT11 Error");
-		}
-
-		// Wait at least 2 seconds between readings (DHT11 requirement)
-		TIMER2_Delay_ms(2000);
+	// Print result
+	if (status == SPI_OK && rxByte == txByte) {
+		USART1_SendString("PASS: SPI loopback OK\r\n");
+		USART1_SendString("Sent: 0x");
+		USART1_SendHex(txByte);
+		USART1_SendString(", Received: 0x");
+		USART1_SendHex(rxByte);
+		USART1_SendString("\r\n");
+	} else {
+		USART1_SendString("FAIL: SPI loopback error\r\n");
+		USART1_SendString("Status: ");
+		USART1_SendNumber((uint32_t) status);
+		USART1_SendString(", Sent: 0x");
+		USART1_SendHex(txByte);
+		USART1_SendString(", Received: 0x");
+		USART1_SendHex(rxByte);
+		USART1_SendString("\r\n");
 	}
-  /* USER CODE END 3 */
+
+	/* USER CODE END 2 */
+
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1) {
+		/* USER CODE END WHILE */
+
+		/* USER CODE BEGIN 3 */
+	}
+	/* USER CODE END 3 */
 }
 
 /**
-  * @brief System Clock Configuration
-  * @retval None
-  */
-void SystemClock_Config(void)
-{
-  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
-  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+ * @brief System Clock Configuration
+ * @retval None
+ */
+void SystemClock_Config(void) {
+	RCC_OscInitTypeDef RCC_OscInitStruct = { 0 };
+	RCC_ClkInitTypeDef RCC_ClkInitStruct = { 0 };
 
-  /** Configure the main internal regulator output voltage
-  */
-  __HAL_RCC_PWR_CLK_ENABLE();
-  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+	/** Configure the main internal regulator output voltage
+	 */
+	__HAL_RCC_PWR_CLK_ENABLE();
+	__HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
 
-  /** Initializes the RCC Oscillators according to the specified parameters
-  * in the RCC_OscInitTypeDef structure.
-  */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
-  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
-  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
-  RCC_OscInitStruct.PLL.PLLM = 12;
-  RCC_OscInitStruct.PLL.PLLN = 96;
-  RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
-  RCC_OscInitStruct.PLL.PLLQ = 4;
-  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	/** Initializes the RCC Oscillators according to the specified parameters
+	 * in the RCC_OscInitTypeDef structure.
+	 */
+	RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+	RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+	RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+	RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+	RCC_OscInitStruct.PLL.PLLM = 12;
+	RCC_OscInitStruct.PLL.PLLN = 96;
+	RCC_OscInitStruct.PLL.PLLP = RCC_PLLP_DIV2;
+	RCC_OscInitStruct.PLL.PLLQ = 4;
+	if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK) {
+		Error_Handler();
+	}
 
-  /** Initializes the CPU, AHB and APB buses clocks
-  */
-  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
-                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
-  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
-  RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
-  RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
-  RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
+	/** Initializes the CPU, AHB and APB buses clocks
+	 */
+	RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_SYSCLK
+			| RCC_CLOCKTYPE_PCLK1 | RCC_CLOCKTYPE_PCLK2;
+	RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+	RCC_ClkInitStruct.AHBCLKDivider = RCC_SYSCLK_DIV1;
+	RCC_ClkInitStruct.APB1CLKDivider = RCC_HCLK_DIV2;
+	RCC_ClkInitStruct.APB2CLKDivider = RCC_HCLK_DIV1;
 
-  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK)
-  {
-    Error_Handler();
-  }
+	if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3) != HAL_OK) {
+		Error_Handler();
+	}
 }
 
 /**
-  * @brief GPIO Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_GPIO_Init(void)
-{
-  /* USER CODE BEGIN MX_GPIO_Init_1 */
+ * @brief GPIO Initialization Function
+ * @param None
+ * @retval None
+ */
+static void MX_GPIO_Init(void) {
+	/* USER CODE BEGIN MX_GPIO_Init_1 */
 
-  /* USER CODE END MX_GPIO_Init_1 */
+	/* USER CODE END MX_GPIO_Init_1 */
 
-  /* GPIO Ports Clock Enable */
-  __HAL_RCC_GPIOH_CLK_ENABLE();
-  __HAL_RCC_GPIOA_CLK_ENABLE();
+	/* GPIO Ports Clock Enable */
+	__HAL_RCC_GPIOH_CLK_ENABLE();
+	__HAL_RCC_GPIOA_CLK_ENABLE();
 
-  /* USER CODE BEGIN MX_GPIO_Init_2 */
+	/* USER CODE BEGIN MX_GPIO_Init_2 */
 
-  /* USER CODE END MX_GPIO_Init_2 */
+	/* USER CODE END MX_GPIO_Init_2 */
 }
 
 /* USER CODE BEGIN 4 */
@@ -247,17 +215,16 @@ static void MX_GPIO_Init(void)
 /* USER CODE END 4 */
 
 /**
-  * @brief  This function is executed in case of error occurrence.
-  * @retval None
-  */
-void Error_Handler(void)
-{
-  /* USER CODE BEGIN Error_Handler_Debug */
+ * @brief  This function is executed in case of error occurrence.
+ * @retval None
+ */
+void Error_Handler(void) {
+	/* USER CODE BEGIN Error_Handler_Debug */
 	/* User can add his own implementation to report the HAL error return state */
 	__disable_irq();
 	while (1) {
 	}
-  /* USER CODE END Error_Handler_Debug */
+	/* USER CODE END Error_Handler_Debug */
 }
 #ifdef USE_FULL_ASSERT
 /**
