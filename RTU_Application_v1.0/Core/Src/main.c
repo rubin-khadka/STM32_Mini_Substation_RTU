@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "fatfs.h"
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -105,23 +106,26 @@ int main(void) {
 	// Initialize Peripherals
 	USART1_Init();
 	SPI1_Init();
-	// Variables for JEDEC ID
-	uint8_t manufacturerID, memoryType, capacity;
 
-	// Small delay for flash power-up (if not done elsewhere)
-	for (volatile uint32_t i = 0; i < 100000U; i++)
-		;
+	// Test write/read
+	uint8_t testData[10] = { 0x48, 0x65, 0x6C, 0x6C, 0x6F, 0x20, 0x53, 0x50,
+			0x49, 0x21 }; // "Hello SPI!"
+	uint8_t readBuf[10] = { 0 };
 
-	// Read JEDEC ID
-	W25Q64_ReadJEDEC_ID(&manufacturerID, &memoryType, &capacity);
+	// Erase sector 0
+	W25Q64_SectorErase(0x000000);
 
-	// Print results over UART
-	USART1_SendString("JEDEC ID: ");
-	USART1_SendHex(manufacturerID);
-	USART1_SendString(" ");
-	USART1_SendHex(memoryType);
-	USART1_SendString(" ");
-	USART1_SendHex(capacity);
+	// Write data to address 0
+	W25Q64_WriteData(0x000000, testData, 10);
+
+	// Read back
+	W25Q64_ReadData(0x000000, readBuf, 10);
+
+	// Print read data
+	USART1_SendString("Read back: ");
+	for (int i = 0; i < 10; i++) {
+		USART1_SendChar(readBuf[i]);
+	}
 	USART1_SendString("\r\n");
 
 	/* USER CODE END 2 */

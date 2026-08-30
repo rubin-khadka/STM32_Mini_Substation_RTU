@@ -24,6 +24,11 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
+ ../FATFS/App/fatfs.h ../Middlewares/Third_Party/FatFs/src/ff.h \
+ ../Middlewares/Third_Party/FatFs/src/integer.h ../FATFS/Target/ffconf.h \
+ ../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h \
+ ../Middlewares/Third_Party/FatFs/src/diskio.h \
+ ../Middlewares/Third_Party/FatFs/src/ff.h ../FATFS/Target/user_diskio.h \
  ../Core/Inc/dwt.h ../Core/Inc/timer2.h ../Core/Inc/gpio.h \
  ../Core/Inc/dht11.h ../Core/Inc/usart1.h ../Core/Inc/main.h \
  ../Core/Inc/i2c1.h ../Core/Inc/ds3231.h ../Core/Inc/mpu6050.h \
@@ -54,6 +59,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_flash_ramfunc.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
+../FATFS/App/fatfs.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../Middlewares/Third_Party/FatFs/src/integer.h:
+../FATFS/Target/ffconf.h:
+../Middlewares/Third_Party/FatFs/src/ff_gen_drv.h:
+../Middlewares/Third_Party/FatFs/src/diskio.h:
+../Middlewares/Third_Party/FatFs/src/ff.h:
+../FATFS/Target/user_diskio.h:
 ../Core/Inc/dwt.h:
 ../Core/Inc/timer2.h:
 ../Core/Inc/gpio.h:
